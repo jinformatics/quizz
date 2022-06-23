@@ -1,4 +1,5 @@
 
+
 const _question = document.getElementById('question');
 const _options = document.querySelector('.quiz-options');
 const _checkBtn = document.getElementById('check-answer');
@@ -11,13 +12,17 @@ let correctAnswer = "", correctScore = 0 , askedCount = 0, totalQuestion = 10;
 
 // load question from API
 async function loadQuestion(){
-//    const APIUrl = 'https://opentdb.com/api.php?amount=1';
-    const APIUrl = 'https://opentdb.com/api.php?amount=1&category=19&difficulty=medium';
+//    const APIUrl = 'https://opentdb.com/api.php?amount=1';s
+    var a = document.getElementById("cat").value;
+    var b = document.getElementById("level").value;
+
+    const APIUrl = "https://opentdb.com/api.php?amount=1&category="+a+"&difficulty="+b;
     const result = await fetch(`${APIUrl}`)
     const data = await result.json();
     _result.innerHTML = "";
     showQuestion(data.results[0]);
 }
+
 
 // event listeners
 function eventListeners(){
